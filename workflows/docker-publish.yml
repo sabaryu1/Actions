@@ -31,3 +31,4 @@ jobs:
 
     - name: Verify Docker image
       run: docker run --rm ${{ secrets.DOCKER_USERNAME }}/nginx:latest
+      
