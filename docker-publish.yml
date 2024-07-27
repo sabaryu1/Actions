@@ -27,3 +27,4 @@ jobs:
       with:
         context: .
         tags: YOUR_DOCKER_USERNAME/YOUR_IMAGE_NAME:latest
+        

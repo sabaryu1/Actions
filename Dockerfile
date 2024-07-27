@@ -1,17 +1,14 @@
-# Використовуємо офіційний образ Node.js як базовий
-FROM node:14
+# Використовуємо офіційний образ Nginx
+FROM nginx:latest
 
-# Встановлюємо робочу директорію
-WORKDIR /app
+# Визначаємо аргумент для білда
+ARG CURRENT_ENVIRONMENT
 
-# Копіюємо вміст поточної директорії в контейнер
-COPY . /app
+# Встановлюємо змінну оточення
+ENV CURRENT_ENVIRONMENT=${CURRENT_ENVIRONMENT}
 
-# Встановлюємо необхідні пакунки
-RUN npm install
+# Створюємо HTML сторінку з використанням змінної оточення
+RUN echo "<!DOCTYPE html><html><head><title>Custom Nginx Page</title></head><body><h1>Hello, this is a custom Nginx page!</h1><p>Environment: ${CURRENT_ENVIRONMENT}</p></body></html>" > /usr/share/nginx/html/index.html
 
-# Відкриваємо порт 8080
-EXPOSE 8080
-
-# Запускаємо додаток
-CMD ["node", "app.js"]
+# Експонуємо порт 80
+EXPOSE 80
