@@ -1,14 +1,8 @@
-# Використовуємо офіційний образ Nginx
+# Використання офіційного іміджу Nginx з Docker Hub
 FROM nginx:latest
 
-# Визначаємо аргумент для білда
-ARG CURRENT_ENVIRONMENT
+# Копіювання власної конфігурації або контенту (якщо потрібно)
+# COPY ./index.html /usr/share/nginx/html/index.html
 
-# Встановлюємо змінну оточення
-ENV CURRENT_ENVIRONMENT=${CURRENT_ENVIRONMENT}
-
-# Створюємо HTML сторінку з використанням змінної оточення
-RUN echo "<!DOCTYPE html><html><head><title>Custom Nginx Page</title></head><body><h1>Hello, this is a custom Nginx page!</h1><p>Environment: ${CURRENT_ENVIRONMENT}</p></body></html>" > /usr/share/nginx/html/index.html
-
-# Експонуємо порт 80
+# Відкриття порту, на якому буде працювати Nginx
 EXPOSE 80
