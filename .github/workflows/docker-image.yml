@@ -28,3 +28,4 @@ jobs:
         context: .
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/nginx:1.21.6
+ 
